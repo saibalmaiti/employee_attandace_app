@@ -1,0 +1,15 @@
+<app-employee-navbar></app-employee-navbar>
+<div style="text-align: center;">
+  <div class="card-container">
+    <h3>Give Attendance</h3>
+    <form class="block" #attendanceForm = "ngForm" (ngSubmit)="giveAttendance(attendanceForm)">
+      Date: {{date}}<br>
+      <div *ngIf="startTime.touched && startTime.errors?.['required']" class="error">Start Time is a required field</div>
+      Start Time: <input type="time"class="form-element" name="startTime" [(ngModel)]="attendanceObj.startTime" #startTime="ngModel" required><br>
+      <div *ngIf="endTime.touched && endTime.errors?.['required']" class="error">End Time is a required field</div>
+      End Time: <input type="time" class="form-element" name="endTime" [(ngModel)]="attendanceObj.endTime" #endTime="ngModel" required><br>
+      <button type="submit"  class="btn btn-primary" style="margin:20px 20px 0px 0px;" [disabled]="!attendanceForm.valid">Submit</button>
+      <button type="submit"  class="btn btn-primary" style="margin:20px 20px 0px 0px;" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>
